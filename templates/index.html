@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="viewport" 
+		<meta name="viewport"
 					content="width=device-width,initial-scale=1">
 		<title>syuukatsu list</title>
 		<style>
@@ -35,15 +35,17 @@
 			overflow-wrap:break-word;
 		}
 		.col_id{ width:5%; }
-		.col_com{ width:12%; }
-		.col_work{ width:23%; }
-		.col_target{ width:10%; }
-		.col_place{ width:10%; }
-		.col_time { width:10%; }
+		.col_com{ width:10%; }
+		.col_work{ width:20%; }
+		.col_target{ width:8%; }
+		.col_place{ width:8%; }
+		.col_time { width:8%; }
 		.col_struct{ width:5%; }
-		.col_salary{ width:10%; }
-		.col_treat{ width:10%; }
+		.col_salary{ width:8%; }
+		.col_treat{ width:8%; }
 		.col_hody{ width:5%; }
+		.col_syozai{ width: 10%; }
+		.col_jugyoin{ width: 5%; }
 		td{
 			border:1px solid #000000;
 			overflow-wrap:break-word;
@@ -64,6 +66,8 @@
 				<th class="col_salary">給与</th>
 				<th class="col_treat">待遇・福利厚生</th>
 				<th class="col_hody">休日・休暇</th>
+				<th class="col_syozai">所在地</th>
+				<th class="col_jugyoin">従業員数</th>
 			</tr>
 				{% for r in contents %}
 					<tr>

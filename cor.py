@@ -17,7 +17,7 @@ def url2utf8file(url):
 		t = r.read()
 	t = t.decode('cp932')
 	t = t.replace('\r','')
-	fn = re.search(r'.*jid=(\d*)&.*', url).group(1) 
+	fn = re.search(r'.*jid=(\d*)&?.*', url).group(1)
 	fn = fn + '.html'
 	with open(fn, 'wb') as f:
 		f.write(t.encode('utf-8'))
@@ -47,7 +47,26 @@ def htmlparse(filename):
 		v = th.find_next_sibling('td').select('p')
 		v = ''.join([ repr(c) for c in v ])
 		cnts += [(h,v)]
+
+	cnts += [(
+		'所在地',
+		schComInf(s,'所在地')
+	)]
+	cnts += [(
+		'従業員数',
+		schComInf(s,'従業員数')
+	)]
+
 	return cnts
+
+def schComInf(src,inf):
+	if inf == '':
+		return '';
+	for th in src.select('.modDetail04 dt'):
+		tmpInf = th.text.replace('\t','').replace('\n','')
+		if inf == tmpInf:
+			dd = th.find_next_sibling('dd')
+			return dd.text
 
 def add_cnts_fordb(cnts):
 	with closing(sqlite3.connect('./workdb.sqlite3')) as con:
